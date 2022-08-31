@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\jadwal;
 
 class JadwalSeed extends Seeder
 {
@@ -26,6 +27,6 @@ class JadwalSeed extends Seeder
             ],
         ];
 
-        User::insert($users);
+        jadwal::insert($users);
     }
 }
