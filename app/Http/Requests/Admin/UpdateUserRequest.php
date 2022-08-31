@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
                 'required',
             ],
             'warna'    => [
-                'required',
+                '',
             ],
         ];
     }
