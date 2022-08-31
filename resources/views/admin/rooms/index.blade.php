@@ -25,30 +25,28 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover datatable datatable-room" cellspacing="0" width="100%">
+                <table class="table table-bordered table-striped table-hover datatable datatable-User" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th width="10">
 
                                 </th>
                                 <th>No</th>
-                                <th>Kendaraan</th>
-                             
+                                <th>{{ __('Kendaraan') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($mobil as $mobil)
                             <tr data-entry-id="{{ $mobil->id }}">
-                                <td>
-
-                                </td>
+                                <td></td>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $mobil->model }}</td>
+                                <td style="background-color:{{ $mobil->warna }}"> </td>
                                 <td>
-                                    <a href="{{ route('admin.rooms.edit', $mobil->id) }}" class="btn btn-info">
+                                    <a href="{{ route('admin.users.edit', $mobil->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.rooms.destroy', $mobil->id) }}" method="POST">
+                                    <form onclick="return confirm('are you sure ? ')"  class="d-inline" action="{{ route('admin.rooms.destroy', $mobil->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">
@@ -59,7 +57,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="9" class="text-center">{{ __('Kosong') }}</td>
+                                <td colspan="7" class="text-center">{{ __('Data Empty') }}</td>
                             </tr>
                             @endforelse
                         </tbody>
