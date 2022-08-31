@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeedPivot::class);
         $this->call(RoleSeedPivot::class);
         $this->call(CountrySeed::class);
+        $this->call(JadwalSeed::class);
     }
 }
