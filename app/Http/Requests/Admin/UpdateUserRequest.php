@@ -30,6 +30,9 @@ class UpdateUserRequest extends FormRequest
             'nomor'    => [
                 'required',
             ],
+            'warna'    => [
+                'required',
+            ],
         ];
     }
 }
