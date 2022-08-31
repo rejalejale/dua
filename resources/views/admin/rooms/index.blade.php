@@ -43,7 +43,7 @@
                                 <td>{{ $mobil->model }}</td>
                                 <td style="background-color:{{ $mobil->warna }}"> </td>
                                 <td>
-                                    <a href="{{ route('admin.users.edit', $mobil->id) }}" class="btn btn-info">
+                                    <a href="{{ route('admin.rooms.edit', $mobil->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
                                     <form onclick="return confirm('are you sure ? ')"  class="d-inline" action="{{ route('admin.rooms.destroy', $mobil->id) }}" method="POST">
