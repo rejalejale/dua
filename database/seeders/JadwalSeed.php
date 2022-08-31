@@ -16,9 +16,9 @@ class JadwalSeed extends Seeder
     {
         $users = [
             [
-                'nama'           => 'contoh',
-                'mobil'          => 'contoh',
-                'keterangan'          => 'contoh',
+                'nama'            => 'contoh',
+                'mobil'           => 'contoh',
+                'keterangan'      => 'contoh',
                 'tujuan'          => 'contoh',
                 'bidang'          => 'contoh',
                 'status'          => 'contoh',

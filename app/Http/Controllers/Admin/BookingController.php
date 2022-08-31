@@ -64,28 +64,28 @@ class BookingController extends Controller
     {
         abort_if(Gate::denies('booking_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
-        $booking = jadwal::where('nama',$request->nama)->orWhere('mobil',$request->mobil)->get();
-        function formatTanggaltostr($date){
-            // menggunakan class Datetime
-            $datetime = new DateTime( $date);
-            return strtotime($datetime->format('Y-m-d'));
-        }
-        $rBerangkat = formatTanggaltoStr($request->berangkat);
-        $rPulang = formatTanggaltoStr($request->pulang);
+        // $booking = jadwal::where('nama',$request->nama)->orWhere('mobil',$request->mobil)->get();
+        // function formatTanggaltostr($date){
+        //     // menggunakan class Datetime
+        //     $datetime = new DateTime( $date);
+        //     return strtotime($datetime->format('Y-m-d'));
+        // }
+        // $rBerangkat = formatTanggaltoStr($request->berangkat);
+        // $rPulang = formatTanggaltoStr($request->pulang);
         
-        foreach($booking as $a){
-            $dataBerangkat = formatTanggaltoStr($a->berangkat);
-            $dataPulang = formatTanggaltoStr($a->pulang);
-            if($rBerangkat >= $dataBerangkat && $rBerangkat <= $dataPulang){
-                return back()->with('error','Driver atau Kendaraan sudah terjadwal');
-            }
-            if($rPulang >= $dataBerangkat && $rPulang <= $dataPulang){
-                return back()->with('error','Driver atau Kendaraan sudah terjadwal');
-            }
-            if($rBerangkat <= $dataBerangkat && $rPulang >= $dataBerangkat){
-                return back()->with('error','Driver atau Kendaraan sudah terjadwal');
-            }
-        }
+        // foreach($booking as $a){
+        //     $dataBerangkat = formatTanggaltoStr($a->berangkat);
+        //     $dataPulang = formatTanggaltoStr($a->pulang);
+        //     if($rBerangkat >= $dataBerangkat && $rBerangkat <= $dataPulang){
+        //         return back()->with('error','Driver atau Kendaraan sudah terjadwal');
+        //     }
+        //     if($rPulang >= $dataBerangkat && $rPulang <= $dataPulang){
+        //         return back()->with('error','Driver atau Kendaraan sudah terjadwal');
+        //     }
+        //     if($rBerangkat <= $dataBerangkat && $rPulang >= $dataBerangkat){
+        //         return back()->with('error','Driver atau Kendaraan sudah terjadwal');
+        //     }
+        // }
         // dd($booking);
         jadwal::create($r->validated());
         riwayat::create($r->validated());
