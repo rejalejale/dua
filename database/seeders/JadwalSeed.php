@@ -23,7 +23,7 @@ class JadwalSeed extends Seeder
                 'bidang'          => 'contoh',
                 'status'          => 'contoh',
                 'berangkat'       => '2022-08-26 09:30:00',
-                'berangkat'       => '2022-08-28 09:30:00',
+                'pulang'          => '2022-08-28 09:30:00',
             ],
         ];
 
