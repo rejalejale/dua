@@ -91,7 +91,10 @@ class RoomController extends Controller
      */
     public function update(RoomRequest $request,mobil $room)
     {
-        $room->update($request->validated());
+        jadwal::where('mobil',$room->model)->update(['mobil' => $request->model]);
+        $room->update([
+            'model'=>$request->model,
+        ]);
 
         return redirect()->route('admin.rooms.index')->with([
             'message' => 'successfully updated !',
