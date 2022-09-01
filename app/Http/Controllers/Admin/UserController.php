@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\jadwal;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\Admin\StoreUserRequest;
@@ -75,9 +76,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request,supir $user)
+    public function update(UpdateUserRequest $r,supir $user,Request $request)
     {
-        $user->update($request->validated());
+        jadwal::where('nama',$user->nama)->update(['nama' => $request->nama]);
+        $user->update($r->validated());
 
         return redirect()->route('admin.users.index')->with([
             'message' => 'successfully updated !',
