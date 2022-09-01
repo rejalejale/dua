@@ -80,7 +80,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $r,supir $user,Request $request)
     {
         // dd($user);
-        jadwal::where('nama',$user->nama)->update(['nama' => $user->nama]);
+        jadwal::where('nama',$user->nama)->update(['nama' => $request->nama]);
         $user->update($r->validated());
 
         return redirect()->route('admin.users.index')->with([
