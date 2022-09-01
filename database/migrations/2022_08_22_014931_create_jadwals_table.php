@@ -25,8 +25,8 @@ class CreateJadwalsTable extends Migration
             $table->text('status')->default('Inactive');
             $table->text('nama');
             $table->text('mobil');
-            $table->foreignIdFor(supir::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(mobil::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(supir::class)->constrained()->cascadeOnDelete()->nullable()->default('');
+            $table->foreignIdFor(mobil::class)->constrained()->cascadeOnDelete()->nullable()->default('');
             
             $table->timestamps();
             $table->softDeletes();
