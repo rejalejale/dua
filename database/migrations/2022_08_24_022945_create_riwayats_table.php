@@ -25,8 +25,8 @@ class CreateRiwayatsTable extends Migration
             $table->text('tujuan')->nullable();
             $table->text('bidang')->nullable();
             $table->text('status')->default('Inactive');
-            $table->foreignIdFor(supir::class)->constrained()->cascadeOnDelete()->nullable()->default('');
-            $table->foreignIdFor(mobil::class)->constrained()->cascadeOnDelete()->nullable()->default('');
+            $table->foreignIdFor(supir::class)->constrained()->cascadeOnDelete()->nullable();
+            $table->foreignIdFor(mobil::class)->constrained()->cascadeOnDelete()->nullable();
             
             $table->timestamps();
             $table->softDeletes();
