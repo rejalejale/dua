@@ -52,7 +52,7 @@
                             <th>Status</th>
                             <td>{{ $booking->status }}     
                                 <a href="{{ route('admin.countries.edit', $booking->id) }}" class="btn btn-info">
-                                        <i></i> Update Status
+                                         Update Status
                                 </a>     
                             </td>
                             
