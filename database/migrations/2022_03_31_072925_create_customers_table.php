@@ -21,7 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('email');
-            $table->foreignIdFor(Country::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Country::class)->nullable()->constrained()->cascadeOnDelete();
             
             $table->timestamps();
             $table->softDeletes();

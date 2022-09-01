@@ -21,8 +21,8 @@ class CreateBookingsTable extends Migration
             $table->datetime('time_to')->nullable();
             $table->text('additional_information')->nullable();
             $table->tinyInteger('status');
-            $table->foreignIdFor(Customer::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Room::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Customer::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Room::class)->nullable()->constrained()->cascadeOnDelete();
             
             $table->timestamps();
             $table->softDeletes();
