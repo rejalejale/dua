@@ -41,7 +41,6 @@
                                 <th>Keterangan</th>
                                 <th>Berangkat</th>
                                 <th>Pulang</th>
-                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -59,7 +58,6 @@
                                 <td>{{ $booking->keterangan}}</td>
                                 <td>{{ $booking->berangkat}}</td>
                                 <td>{{ $booking->pulang}}</td>
-                                <td>{{ $booking->status }}</td>
                                 <td>
                                     <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST">
                                         @csrf
