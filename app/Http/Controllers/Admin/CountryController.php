@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Country;
 use App\Models\jadwal;
-use App\Models\riwayat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
@@ -76,18 +75,10 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(jadwal $country, Request $request)
+    public function update(CountryRequest $request, jadwal $country)
     {
 
-        riwayat::where('status',$country->status)->update(['status' => $request->status]);
-        $country->update([
-            'status'=>$request->status,
-            'berangkat'=>$request->nomor,
-            'pulang'=>$request->warna,
-            'keterangan'=>$request->warna,
-            'tujuan'=>$request->warna,
-            'bidang'=>$request->warna,
-        ]);
+        $country->update($request->validated());
 
         return redirect()->route('admin.system_calendars.index')->with([
             'message' => 'successfully updated !',
