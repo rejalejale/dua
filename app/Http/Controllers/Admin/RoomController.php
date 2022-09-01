@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\Admin\RoomRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\mobil;
+use App\Models\jadwal;
 
 class RoomController extends Controller
 {
