@@ -77,11 +77,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $r,supir $user,Request $request)
+    public function update(supir $user, Request $request)
     {
-        // dd($user);
+
         jadwal::where('nama',$user->nama)->update(['nama' => $request->nama]);
-        $user->update($r->validated());
+        $user->update([
+            'nama'=>$request->nama,
+            'nomor'=>$request->nomor,
+            'warna'=>$request->warna
+        ]);
+        // $user->update($r->validated());
 
         return redirect()->route('admin.users.index')->with([
             'message' => 'successfully updated !',
