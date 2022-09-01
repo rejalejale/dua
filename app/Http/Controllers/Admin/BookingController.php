@@ -189,7 +189,7 @@ class BookingController extends Controller
     public function updateStatus(jadwal $booking)
     {
         abort_if(Gate::denies('booking_delete'), Response::HTTP_FORBIDDEN, 'khusus admin');
-        dd($booking->status);
+        // dd($booking->status);
         $booking->delete();
 
         return redirect()->route('admin.system_calendars.index')->with([
