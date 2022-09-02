@@ -79,8 +79,8 @@ class CountryController extends Controller
     public function update(Request $request, jadwal $country, riwayat $riwayat)
     {
 
-        $country->update(['status' =>$request->status()]);
-        $riwayat->update(['status' =>$request->status()]);
+        $country->update(['status' =>$request->status]);
+        $riwayat->update(['status' =>$request->status]);
         
         return redirect()->route('admin.system_calendars.index')->with([
             'message' => 'successfully updated !',
