@@ -134,7 +134,7 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BookingRequest $r)
+    public function update(BookingRequest $r, jadwal $booking, Request $request, riwayat $riwayat)
     {
         abort_if(Gate::denies('booking_edit'), Response::HTTP_FORBIDDEN, 'khusus admin');
 
@@ -160,9 +160,9 @@ class BookingController extends Controller
                 return back()->with('error','Driver atau Kendaraan sudah terjadwal');
             }
         }
-        // dd($booking);
-        jadwal::update($r->validated());
-        riwayat::update($r->validated());
+
+        $booking->update($r->validated());
+        $riwayat->update($r->validated());
 
         return redirect()->route('admin.system_calendars.index')->with([
             'message' => 'successfully updated !',
