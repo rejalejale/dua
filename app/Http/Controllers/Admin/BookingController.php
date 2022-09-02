@@ -134,7 +134,7 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BookingRequest $r, jadwal $booking, Request $request, riwayat $riwayat)
+    public function update(jadwal $booking, Request $request, riwayat $riwayat)
     {
         abort_if(Gate::denies('booking_edit'), Response::HTTP_FORBIDDEN, 'khusus admin');
 
@@ -161,8 +161,8 @@ class BookingController extends Controller
             }
         }
 
-        $booking->update($r->validated());
-        $riwayat->update($r->validated());
+        $booking->update($request->all());
+        $riwayat->update($request->all());
 
         return redirect()->route('admin.system_calendars.index')->with([
             'message' => 'successfully updated !',
