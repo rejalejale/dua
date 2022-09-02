@@ -176,10 +176,11 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jadwal $booking)
+    public function destroy(jadwal $booking, riwayat $riwayat)
     {
         abort_if(Gate::denies('booking_delete'), Response::HTTP_FORBIDDEN, 'khusus admin');
         $booking->delete();
+        $riwayat->delete();
 
         return redirect()->route('admin.system_calendars.index')->with([
             'message' => 'successfully deleted !',
