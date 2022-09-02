@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\jadwal;
+use App\Models\riwayat;
 use App\Http\Controllers\Controller;
 // use Illuminate\Support\Facades\Request;
 use Illuminate\Http\Request;
@@ -81,6 +82,7 @@ class UserController extends Controller
     {
 
         jadwal::where('nama',$user->nama)->update(['nama' => $request->nama]);
+        riwayat::where('nama',$user->nama)->update(['nama' => $request->nama]);
         $user->update([
             'nama'=>$request->nama,
             'nomor'=>$request->nomor,

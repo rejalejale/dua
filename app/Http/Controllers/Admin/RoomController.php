@@ -12,6 +12,7 @@ use App\Http\Requests\Admin\RoomRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\mobil;
 use App\Models\jadwal;
+use App\Models\riwayat;
 
 class RoomController extends Controller
 {
@@ -93,6 +94,7 @@ class RoomController extends Controller
     public function update(RoomRequest $request,mobil $room)
     {
         jadwal::where('mobil',$room->model)->update(['mobil' => $request->model]);
+        riwayat::where('mobil',$room->model)->update(['mobil' => $request->model]);
         $room->update([
             'model'=>$request->model,
         ]);
