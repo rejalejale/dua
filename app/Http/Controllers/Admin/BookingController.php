@@ -134,7 +134,7 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(jadwal $booking, Request $request, riwayat $riwayat)
+    public function update(jadwal $booking, Request $request)
     {
         abort_if(Gate::denies('booking_edit'), Response::HTTP_FORBIDDEN, 'khusus admin');
 
@@ -148,6 +148,7 @@ class BookingController extends Controller
         $rPulang = formatTanggaltoStr($request->pulang);
         
         foreach($book as $a){
+            if($a==$booking) continue;
             $dataBerangkat = formatTanggaltoStr($a->berangkat);
             $dataPulang = formatTanggaltoStr($a->pulang);
             if($rBerangkat >= $dataBerangkat && $rBerangkat <= $dataPulang){
@@ -160,6 +161,8 @@ class BookingController extends Controller
                 return back()->with('error','Driver atau Kendaraan sudah terjadwal');
             }
         }
+
+        $riwayat=riwayat::where('nama',$booking->nama)->where('mobil',$booking->mobil)->where('berangkat',$booking->berangkat)->where('pulang',$booking->pulang)->first();
 
         $booking->update($request->all());
         $riwayat->update($request->all());
@@ -176,9 +179,12 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jadwal $booking, riwayat $riwayat)
+    public function destroy(jadwal $booking)
     {
         abort_if(Gate::denies('booking_delete'), Response::HTTP_FORBIDDEN, 'khusus admin');
+
+        $riwayat=riwayat::where('nama',$booking->nama)->where('mobil',$booking->mobil)->where('berangkat',$booking->berangkat)->where('pulang',$booking->pulang)->first();
+
         $booking->delete();
         $riwayat->delete();
 
