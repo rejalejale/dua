@@ -78,7 +78,7 @@ class CountryController extends Controller
      */
     public function update(Request $request, jadwal $jadwal)
     {
-        $riwayat=riwayat::where('nama',$jadwal->nama)->where('mobil',$jadwal->mobil)->where('berangkat',$jadwal->berangkat)->where('pulang',$jadwal->pulang)->get();
+        $riwayat=riwayat::where('nama',$jadwal->nama)->where('mobil',$jadwal->mobil)->where('berangkat',$jadwal->berangkat)->where('pulang',$jadwal->pulang)->first();
         $jadwal->update(['status' =>$request->status]);
         $riwayat->update(['status' =>$request->status]);
         
