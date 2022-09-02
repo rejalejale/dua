@@ -76,10 +76,10 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, jadwal $country, riwayat $riwayat)
+    public function update(Request $request, jadwal $jadwal)
     {
-
-        $country->update(['status' =>$request->status]);
+        $riwayat=riwayat::where('nama',$jadwal->nama)->where('mobil',$jadwal->mobil)->where('berangkat',$jadwal->berangkat)->where('pulang',$jadwal->pulang)->get();
+        $jadwal->update(['status' =>$request->status]);
         $riwayat->update(['status' =>$request->status]);
         
         return redirect()->route('admin.system_calendars.index')->with([
