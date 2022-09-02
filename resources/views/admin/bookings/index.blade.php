@@ -61,13 +61,7 @@
                                 <td>{{ $booking->pulang}}</td>
                                 <td>{{ $booking->status}}</td>
                                 <td>
-                                    <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    
                                 </td>
                             </tr>
                             @empty

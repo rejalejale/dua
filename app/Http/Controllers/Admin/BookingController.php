@@ -218,7 +218,7 @@ class BookingController extends Controller
     {
         abort_if(Gate::denies('booking_delete'), Response::HTTP_FORBIDDEN, 'khusus admin');
 
-        jadwal::whereIn('id', request('ids'))->delete();
+        riwayat::whereIn('id', request('ids'))->delete();
 
         return response()->noContent();
     }
