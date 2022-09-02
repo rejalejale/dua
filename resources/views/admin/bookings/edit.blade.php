@@ -13,6 +13,12 @@
         </div>
     @endif
 
+    @if(session()->has('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+
 <!-- Content Row -->
         <div class="card shadow">
             <div class="card-header py-3 d-flex">
