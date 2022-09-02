@@ -165,7 +165,9 @@ class BookingController extends Controller
         $riwayat=riwayat::where('nama',$booking->nama)->where('mobil',$booking->mobil)->where('berangkat',$booking->berangkat)->where('pulang',$booking->pulang)->first();
 
         $booking->update($request->all());
-        $riwayat->update($request->all());
+        if($riwayat){
+            $riwayat->update($request->all());
+        }
 
         return redirect()->route('admin.system_calendars.index')->with([
             'message' => 'successfully updated !',
@@ -186,7 +188,9 @@ class BookingController extends Controller
         $riwayat=riwayat::where('nama',$booking->nama)->where('mobil',$booking->mobil)->where('berangkat',$booking->berangkat)->where('pulang',$booking->pulang)->first();
 
         $booking->delete();
-        $riwayat->delete();
+        if($riwayat){
+            $riwayat->delete();
+        }
 
         return redirect()->route('admin.system_calendars.index')->with([
             'message' => 'successfully deleted !',

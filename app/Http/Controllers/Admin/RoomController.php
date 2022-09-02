@@ -93,8 +93,11 @@ class RoomController extends Controller
      */
     public function update(RoomRequest $request,mobil $room)
     {
-        jadwal::where('mobil',$room->model)->update(['mobil' => $request->model]);
-        riwayat::where('mobil',$room->model)->update(['mobil' => $request->model]);
+        jadwal::where('mobil',$room->model)->update(['mobil' => $request->model]);        
+        $riwayat=riwayat::where('mobil',$room->model)->get();
+        if($riwayat){
+            $riwayat->update(['mobil' => $request->model]);
+        }
         $room->update([
             'model'=>$request->model,
         ]);
@@ -113,6 +116,7 @@ class RoomController extends Controller
      */
     public function destroy(mobil $room)
     {
+        $jadwal=jadwal::where('mobil',$room->model)->delete();
         $room->delete();
 
         return redirect()->route('admin.rooms.index')->with([

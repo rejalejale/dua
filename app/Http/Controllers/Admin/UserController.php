@@ -82,7 +82,10 @@ class UserController extends Controller
     {
 
         jadwal::where('nama',$user->nama)->update(['nama' => $request->nama]);
-        riwayat::where('nama',$user->nama)->update(['nama' => $request->nama]);
+        $riwayat=riwayat::where('nama',$user->nama)->get();
+        if($riwayat){
+            $riwayat->update(['nama' => $request->nama]);
+        }
         $user->update([
             'nama'=>$request->nama,
             'nomor'=>$request->nomor,
@@ -104,6 +107,7 @@ class UserController extends Controller
      */
     public function destroy(supir $user)
     {
+        $jadwal=jadwal::where('nama',$user->nama)->delete();
         $user->delete();
 
         return redirect()->route('admin.users.index')->with([

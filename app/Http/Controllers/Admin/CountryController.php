@@ -80,7 +80,9 @@ class CountryController extends Controller
     {
         $riwayat=riwayat::where('nama',$country->nama)->where('mobil',$country->mobil)->where('berangkat',$country->berangkat)->where('pulang',$country->pulang)->first();
         $country->update(['status' =>$request->status]);
-        $riwayat->update(['status' =>$request->status]);
+        if($riwayat){
+            $riwayat->update(['status' =>$request->status]);
+        }
         
         return redirect()->route('admin.system_calendars.index')->with([
             'message' => 'successfully updated !',
