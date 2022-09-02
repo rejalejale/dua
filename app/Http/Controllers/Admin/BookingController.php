@@ -138,7 +138,7 @@ class BookingController extends Controller
     {
         abort_if(Gate::denies('booking_edit'), Response::HTTP_FORBIDDEN, 'khusus admin');
 
-        $booking = jadwal::where('nama',$request->nama)->orWhere('mobil',$request->mobil)->get();
+        $book = jadwal::where('nama',$request->nama)->orWhere('mobil',$request->mobil)->get();
         function formatTanggaltostr($date){
             // menggunakan class Datetime
             $datetime = new DateTime( $date);
@@ -147,7 +147,7 @@ class BookingController extends Controller
         $rBerangkat = formatTanggaltoStr($request->berangkat);
         $rPulang = formatTanggaltoStr($request->pulang);
         
-        foreach($booking as $a){
+        foreach($book as $a){
             $dataBerangkat = formatTanggaltoStr($a->berangkat);
             $dataPulang = formatTanggaltoStr($a->pulang);
             if($rBerangkat >= $dataBerangkat && $rBerangkat <= $dataPulang){
