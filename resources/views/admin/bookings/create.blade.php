@@ -61,11 +61,11 @@
                         <input class="form-control" name="keterangan" id="keterangan"  cols="30" rows="10">{{ old('keterangan') }}</input>
                     </div>
                     <div class="form-group">
-                        <label for="berangkat">{{ __('Time From') }}</label>
+                        <label for="berangkat">{{ __('berangkat') }}</label>
                         <input type="text" class="form-control datetimepicker" id="berangkat" name="berangkat" value="{{ old('berangkat', $timeFrom) }}" />
                     </div>
                     <div class="form-group">
-                        <label for="pulang">{{ __('Time to') }}</label>
+                        <label for="pulang">{{ __('pulang') }}</label>
                         <input type="text" class="form-control datetimepicker" id="pulang" name="pulang" value="{{ old('pulang', $timeTo) }}" />
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Save') }}</button>

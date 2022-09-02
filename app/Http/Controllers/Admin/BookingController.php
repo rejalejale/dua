@@ -134,10 +134,10 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BookingRequest $r, jadwal $booking, Request $request, riwayat $riwayat)
+    public function update(Request $request, BookingRequest $r)
     {
-        abort_if(Gate::denies('booking_edit'), Response::HTTP_FORBIDDEN, 'khusus admin');
-
+        abort_if(Gate::denies('booking_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
         $booking = jadwal::where('nama',$request->nama)->orWhere('mobil',$request->mobil)->get();
         function formatTanggaltostr($date){
             // menggunakan class Datetime
@@ -160,13 +160,13 @@ class BookingController extends Controller
                 return back()->with('error','Driver atau Kendaraan sudah terjadwal');
             }
         }
-
-        $booking->update($r->validated());
-        $riwayat->update($r->validated());
+        // dd($booking);
+        jadwal::update($r->validated());
+        riwayat::update($r->validated());
 
         return redirect()->route('admin.system_calendars.index')->with([
-            'message' => 'successfully updated !',
-            'alert-type' => 'info'
+            'message' => 'successfully created !',
+            'alert-type' => 'success'
         ]);
     }
 
