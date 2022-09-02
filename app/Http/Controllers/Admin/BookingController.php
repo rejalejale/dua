@@ -136,8 +136,8 @@ class BookingController extends Controller
      */
     public function update(Request $request, BookingRequest $r)
     {
-        abort_if(Gate::denies('booking_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        
+        abort_if(Gate::denies('booking_edit'), Response::HTTP_FORBIDDEN, 'khusus admin');
+
         $booking = jadwal::where('nama',$request->nama)->orWhere('mobil',$request->mobil)->get();
         function formatTanggaltostr($date){
             // menggunakan class Datetime
@@ -165,8 +165,8 @@ class BookingController extends Controller
         riwayat::update($r->validated());
 
         return redirect()->route('admin.system_calendars.index')->with([
-            'message' => 'successfully created !',
-            'alert-type' => 'success'
+            'message' => 'successfully updated !',
+            'alert-type' => 'info'
         ]);
     }
 

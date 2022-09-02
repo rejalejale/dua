@@ -57,6 +57,14 @@
                     </div>
                     <div class="form-group">
                         <label for="berangkat">{{ __('berangkat') }}</label>
+                        <input type="text" class="form-control datetimepicker" id="berangkat" name="berangkat" value="{{ old('berangkat', $timeFrom) }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="pulang">{{ __('pulang') }}</label>
+                        <input type="text" class="form-control datetimepicker" id="pulang" name="pulang" value="{{ old('pulang', $timeTo) }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="berangkat">{{ __('berangkat') }}</label>
                         <input type="text" class="form-control datetimepicker" id="berangkat" name="berangkat" value="{{ old('berangkat', $booking->berangkat) }}" />
                     </div>
                     <div class="form-group">
