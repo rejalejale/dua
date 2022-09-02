@@ -31,14 +31,14 @@
                                 <th width="10">
 
                                 </th>
-                                <th>No</th>
+                                <th>{{ __('No') }}</th>
                                 <th>{{ __('Kendaraan') }}</th>
+                                <th>{{ __('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($mobil as $mobil)
                             <tr data-entry-id="{{ $mobil->id }}">
-                                <td></td>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $mobil->model }}</td>
                                 <td style="background-color:{{ $mobil->warna }}"> </td>

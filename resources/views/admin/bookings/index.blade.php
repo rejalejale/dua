@@ -42,7 +42,6 @@
                                 <th>Berangkat</th>
                                 <th>Pulang</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,9 +59,6 @@
                                 <td>{{ $booking->berangkat}}</td>
                                 <td>{{ $booking->pulang}}</td>
                                 <td>{{ $booking->status}}</td>
-                                <td>
-                                    
-                                </td>
                             </tr>
                             @empty
                             <tr>
