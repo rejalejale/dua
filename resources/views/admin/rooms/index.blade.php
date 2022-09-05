@@ -38,7 +38,6 @@
                             <tr data-entry-id="{{ $mobil->id }}">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $mobil->model }}</td>
-                                <td style="background-color:{{ $mobil->warna }}"> </td>
                                 <td>
                                     <a href="{{ route('admin.rooms.edit', $mobil->id) }}" class="btn btn-info">
                                         <i class="fa fa-pencil-alt"></i>
