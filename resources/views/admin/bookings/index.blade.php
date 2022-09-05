@@ -16,13 +16,6 @@
                     @can('booking_create')
                     @endcan
                 </div>
-                <form onclick="return confirm('are you sure ? ')" class="d-inline" action="{{ route('admin.hancurkan.sayang') }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash"></i> Hapus
-                                        </button>
-                </form>
             </div>
             
             <div class="card-body">
@@ -62,7 +55,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="9" class="text-center">{{ __('Data Empty') }}</td>
+                                <td colspan="9" class="text-center">{{ __('Kosong') }}</td>
                             </tr>
                             @endforelse
                         </tbody>
