@@ -28,9 +28,6 @@
                 <table class="table table-bordered table-striped table-hover datatable datatable-User" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th width="10">
-
-                                </th>
                                 <th>{{ __('No') }}</th>
                                 <th>{{ __('Kendaraan') }}</th>
                                 <th>{{ __('Action') }}</th>
