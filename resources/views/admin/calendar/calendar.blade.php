@@ -13,7 +13,7 @@
                         <div class="form-group">
                             <select class="form-control select2" name="customer_id" id="customer_id">
                                 @foreach($customers as $id => $customer)
-                                    <option value="{{ $customer }}" {{ request()->input('customer_id') == $id ? 'selected' : '' }}>{{ $customer }}</option>
+                                    <option value="{{ $customer }}" {{ request()->input('customer_id') == $customer ? 'selected' : '' }}>{{ $customer }}</option>
                                 @endforeach
                             </select>
                         </div>
