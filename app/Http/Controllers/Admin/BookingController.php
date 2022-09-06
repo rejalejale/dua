@@ -86,18 +86,18 @@ class BookingController extends Controller
             if($rBerangkat <= $dataBerangkat && $rPulang >= $dataBerangkat){
                 return back()->with('error','Driver sudah terjadwal');
             }
-            foreach($book as $b){
-                $dataku = formatTanggaltoStr($b->berangkat);
-                $datanya = formatTanggaltoStr($b->pulang);
-                if($rBerangkat >= $dataku && $rBerangkat <= $datanya){
-                    return back()->with('error','Kendaraan sudah terjadwal');
-                }
-                if($rPulang >= $dataku && $rPulang <= $datanya){
-                    return back()->with('error','Kendaraan sudah terjadwal');
-                }
-                if($rBerangkat <= $dataku && $rPulang >= $dataku){
-                    return back()->with('error','Kendaraan sudah terjadwal');
-                }
+        }
+        foreach($book as $b){
+            $dataku = formatTanggaltoStr($b->berangkat);
+            $datanya = formatTanggaltoStr($b->pulang);
+            if($rBerangkat >= $dataku && $rBerangkat <= $datanya){
+                return back()->with('error','Kendaraan sudah terjadwal');
+            }
+            if($rPulang >= $dataku && $rPulang <= $datanya){
+                return back()->with('error','Kendaraan sudah terjadwal');
+            }
+            if($rBerangkat <= $dataku && $rPulang >= $dataku){
+                return back()->with('error','Kendaraan sudah terjadwal');
             }
         }
         // dd($booking);
