@@ -81,7 +81,7 @@ class UserController extends Controller
     public function update(supir $user, Request $request)
     {
 
-        $riwayat=riwayat::where('nama',$user->nama)->get();
+        $riwayat=riwayat::where('nama',$user->nama);
         jadwal::where('nama',$user->nama)->update(['nama' => $request->nama]);
         if($riwayat){
             $riwayat->update(['nama' => $request->nama]);
