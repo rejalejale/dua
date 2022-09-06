@@ -93,8 +93,8 @@ class RoomController extends Controller
      */
     public function update(RoomRequest $request,mobil $room)
     {
+        $riwayat=riwayat::where('mobil',$room->model);
         jadwal::where('mobil',$room->model)->update(['mobil' => $request->model]);        
-        $riwayat=riwayat::where('mobil',$room->model)->get();
         if($riwayat){
             $riwayat->update(['mobil' => $request->model]);
         }
