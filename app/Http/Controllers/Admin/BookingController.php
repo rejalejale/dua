@@ -152,7 +152,8 @@ class BookingController extends Controller
     {
         abort_if(Gate::denies('booking_edit'), Response::HTTP_FORBIDDEN, 'khusus admin');
 
-        $book = jadwal::where('nama',$request->nama)->orWhere('mobil',$request->mobil)->get();
+        $book = jadwal::where('nama',$request->nama)->get();
+        $booked = jadwal::Where('mobil',$request->mobil)->get();
         function formatTanggaltostr($date){
             // menggunakan class Datetime
             $datetime = new DateTime( $date);
@@ -166,13 +167,27 @@ class BookingController extends Controller
             $dataBerangkat = formatTanggaltoStr($a->berangkat);
             $dataPulang = formatTanggaltoStr($a->pulang);
             if($rBerangkat >= $dataBerangkat && $rBerangkat <= $dataPulang){
-                return back()->with('error','Driver atau Kendaraan sudah terjadwal');
+                return back()->with('error','Driver sudah terjadwal');
             }
             if($rPulang >= $dataBerangkat && $rPulang <= $dataPulang){
-                return back()->with('error','Driver atau Kendaraan sudah terjadwal');
+                return back()->with('error','Driver sudah terjadwal');
             }
             if($rBerangkat <= $dataBerangkat && $rPulang >= $dataBerangkat){
-                return back()->with('error','Driver atau Kendaraan sudah terjadwal');
+                return back()->with('error','Driver sudah terjadwal');
+            }
+        }
+        foreach($booked as $b){
+            if($b==$booking) continue;
+            $dataBerangkat = formatTanggaltoStr($b->berangkat);
+            $dataPulang = formatTanggaltoStr($b->pulang);
+            if($rBerangkat >= $dataBerangkat && $rBerangkat <= $dataPulang){
+                return back()->with('error','Kendaraan sudah terjadwal');
+            }
+            if($rPulang >= $dataBerangkat && $rPulang <= $dataPulang){
+                return back()->with('error','Kendaraan sudah terjadwal');
+            }
+            if($rBerangkat <= $dataBerangkat && $rPulang >= $dataBerangkat){
+                return back()->with('error','Kendaraan sudah terjadwal');
             }
         }
 
