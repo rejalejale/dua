@@ -89,7 +89,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script>
         $('.datetimepicker').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm',
+            format: 'YYYY-MM-DD',
             locale: 'en',
             sideBySide: true,
             icons: {
